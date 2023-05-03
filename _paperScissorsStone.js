@@ -1,13 +1,13 @@
 //https://gist.github.com/codecademydev/6753c664618f5e509c84def5ed7a684d
 //https://github.com/peppergrinder/js_paperScissorsStone
 const getUserChoice = userInput => {
-    userInput = userInput.toLowerCase();
-    if (userInput === 'rock' || userInput === 'paper' || userInput === 'scissors') {
-    return userInput;
-    } else {
-    console.log('Error, please type rock, paper or scissors.');
-    }
+  userInput = userInput.toLowerCase();
+  if (userInput === 'rock' || userInput === 'paper' || userInput === 'scissors') {
+  return userInput;
+  } else {
+  console.log('Error, please type rock, paper or scissors.');
   }
+}
   //console.log(getUserChoice('Paper'));
   //console.log(getUserChoice('Skateboard'));
 
