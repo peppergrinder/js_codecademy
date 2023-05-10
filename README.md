@@ -10,10 +10,10 @@
 
 ##Lists
 ###Unordered Lists (#, +, -)
-+List Item 1
-+List Item 2
-+List Item 3
++ List Item 1
++ List Item 2
++ List Item 3
 ###Ordered List (1....n)
-1.List Item 1
-2.List Item 2
-3.List Item 3
+1. List Item 1
+2. List Item 2
+3. List Item 3
