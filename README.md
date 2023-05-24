@@ -9,22 +9,22 @@
 
 ## 7 fundamental data types in JavaScript: 
 ### strings, numbers, booleans, null, undefined, symbol, and object.
-<!-- line numbers not supported in GitHub code blocks -->
-```{r, attr.source='.numberLines'}
+<!-- line numbers not supported in GitHub code blocks: {r, attr.source='.numberLines'} -->
+```JavaScript
 //Create a Variable: var - Old School until 2015
 var favouriteFood = 'pizza';
 var numOfSlices = (8);
 console.log(favouriteFood);
 console.log(numOfSlices);
 ```
-```
+```JavaScript
 //Create a Variable: let
 let meal = 'Enchiladas';
 console.log(meal); // Output: Enchiladas
 meal = 'Burrito';
 console.log(meal); // Output: Burrito
 ```
-```
+```JavaScript
 //Mathematical Assignment Operators
 let levelUp = 10;
 let powerLevel = 9001;
@@ -42,25 +42,25 @@ console.log('The value of powerLevel:', powerLevel);
 console.log('The value of multiplyMe:', multiplyMe); 
 console.log('The value of quarterMe:', quarterMe);
 ```
-```
+```JavaScript
 //The Increment and Decrement Operator
 let gainedDollar = 3;
 let lostDollar = 50;
 gainedDollar++;
 lostDollar--;
 ```
-```
+```JavaScript
 //String Concatenation with Variables
 let favoriteAnimal = 'Rhino';
 console.log('My favourite animal: ' + favoriteAnimal);
 ```
-```
+```JavaScript
 //template literals - use backticks `
 const myName = 'Baba Voss';
 const myCity = 'Santiago';
 console.log(`My name is ${myName}. My favorite city is ${myCity}.`)
 ```
-```
+```JavaScript
 //typeof operator
 let newVariable = 'Playing around with typeof.';
 console.log(typeof newVariable);
@@ -68,7 +68,7 @@ newVariable = 1;
 console.log(typeof newVariable);
 ```
 ## Temperature conversions
-```
+```JavaScript
 ////new constant variable "kelvin"
 const kelvin = 100;
 ////convert kelvin to celsius
@@ -88,7 +88,7 @@ console.log(`The temperature is ${newton} degrees in Newton.`);
 
 
 ## Dog Years
-```
+```JavaScript
 //Define age
 const myAge = 3;
 //The first two years of a dog’s life count as 10.5 dog years each.
@@ -107,7 +107,7 @@ console.log(`My name is ${myNewName}. I am ${myAge} years old in human years whi
 ```
 
 ## Conditional Statements
-```
+```JavaScript
 let hungerLevel = 7;
 if (hungerLevel <= 7) {
   console.log('Time to eat!');
@@ -116,7 +116,7 @@ if (hungerLevel <= 7) {
 };
 ```
 ## Logical Operators: && (and), || (or), !(negate= true becomes false and vice versa)
-```
+```JavaScript
 let mood = 'sleepy';
 let tirednessLevel = 6;
 if (mood === 'sleepy' || tirednessLevel > 8){
@@ -127,21 +127,21 @@ if (mood === 'sleepy' || tirednessLevel > 8){
 ```
 
 ## Use short circuit evaluation to assign  writingUtensil variable below:
-```
+```JavaScript
 let tool = ''; //change me
 let writingUtensil = tool || 'pen';
 
 console.log(`The ${writingUtensil} is mightier than the sword.`);
 ```
 ## Ternary Operator (shorthand for if..else)
-```
+```JavaScript
 let isLocked = false;
 
 isLocked ? console.log('You will need a key to open the door.')
 : console.log('You will not need a key to open the door.');
 ```
 ## Ternary
-```
+```JavaScript
 let favoritePhrase = 'Love That!';
 
 favoritePhrase === 'Love That!' ? console.log('I love that!')
@@ -149,7 +149,7 @@ favoritePhrase === 'Love That!' ? console.log('I love that!')
 ```
 
 ## Else If Statements
-```
+```JavaScript
 let season = 'summer';
 
 if (season === 'spring') {
@@ -166,7 +166,7 @@ if (season === 'spring') {
 ```
 
 ## The switch keyword
-```
+```JavaScript
 let athleteFinalPosition = 'first place';
 
 switch (athleteFinalPosition) {
@@ -185,13 +185,13 @@ switch (athleteFinalPosition) {
 }
 ```
 ## Functions
-```
+```JavaScript
 function sayThanks(name) {
   console.log('Thank you for your purchase '+ name +'! We appreciate your business.');
 }
 sayThanks('Cole');
 ```
-```
+```JavaScript
 function makeShoppingList(item1 = 'milk', item2 ='bread', item3 = 'eggs'){
   console.log(`Remember to buy ${item1}`);
   console.log(`Remember to buy ${item2}`);
@@ -199,7 +199,7 @@ function makeShoppingList(item1 = 'milk', item2 ='bread', item3 = 'eggs'){
 }
 makeShoppingList();
 ```
-```
+```JavaScript
 function monitorCount(rows, columns) {
   const numOfMonitors = rows * columns;
   return numOfMonitors;
@@ -208,7 +208,7 @@ function monitorCount(rows, columns) {
 console.log(monitorCount(5,4))
 ```
 ## Function expressions (anonymous)
-```
+```JavaScript
 const plantNeedsWater = function(day) {
   if (day === 'Wednesday') {
     return true;
@@ -219,7 +219,7 @@ const plantNeedsWater = function(day) {
 console.log(plantNeedsWater('Tuesday'));
 ```
 ## Arrow functions
-```
+```JavaScript
 const plantNeedsWater2 = (day) => {
   if (day === 'Wednesday') {
     return true;
@@ -230,6 +230,6 @@ const plantNeedsWater2 = (day) => {
 console.log(plantNeedsWater2('Wednesday'));
 ```
 ## Concise Body Arrow Functions
-```
+```JavaScript
 const plantNeedsWater3 = day => day === 'Wednesday' ? true : false;
 ```
