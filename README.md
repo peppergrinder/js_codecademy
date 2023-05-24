@@ -1,6 +1,12 @@
 # bucket full of scripts from js_codecademy course
 ### https://www.codecademy.com/learn/introduction-to-javascript
 
+# Run JavaScript on Visual Studio Code
+- Open desired folder in VSC
+- Open a terminal window
+- have nodes installed `nodes -v`
+- open in terminal `nodes jsfile.js`
+
 # Markdown Cheatsheet
 <!-- This content will not appear in the rendered Markdown -->
 [stackedit.io](https://stackedit.io/app#)
