@@ -9,6 +9,7 @@
 
 ## 7 fundamental data types in JavaScript: 
 ### strings, numbers, booleans, null, undefined, symbol, and object.
+<!-- line numbers not supported in GitHub code blocks -->
 ```{r, attr.source='.numberLines'}
 //Create a Variable: var - Old School until 2015
 var favouriteFood = 'pizza';
@@ -16,7 +17,7 @@ var numOfSlices = (8);
 console.log(favouriteFood);
 console.log(numOfSlices);
 ```
-```{r, attr.source='.numberLines'}
+```
 //Create a Variable: let
 let meal = 'Enchiladas';
 console.log(meal); // Output: Enchiladas
