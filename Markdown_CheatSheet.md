@@ -59,6 +59,7 @@ The background color is `#ffffff` for light mode and `#000000` for dark mode.
 | SQL Hat           |   True   | 23.99 |
 | Codecademy Tee    |  False   | 19.99 |
 | Codecademy Hoodie |  False   | 42.99 |
+
 `:--` align left
 `--:` align right
 `---` centered
