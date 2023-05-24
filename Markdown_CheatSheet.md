@@ -39,7 +39,10 @@ git status
 git add
 git commit
 ```
-
+Add language to code block [Language detection](https://github.com/github-linguist/linguist/blob/master/lib/linguist/languages.yml)
+```JavaScript
+const plantNeedsWater3 = day => day === 'Wednesday' ? true : false;
+```
 <sub>This is a subscript text </sub>
 <sup>This is a superscript text </sup>
 
