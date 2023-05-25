@@ -1,11 +1,13 @@
 # bucket full of scripts from js_codecademy course
 ### https://www.codecademy.com/learn/introduction-to-javascript
 
-# Run JavaScript on Visual Studio Code
-- Open desired folder in VSC
+# Run JavaScript from Terminal/Shell
+- Navigate to desired folder
 - Open a terminal window
-- have nodes installed `nodes -v`
-- open in terminal `nodes jsfile.js`
+- [have nodes installed](https://treehouse.github.io/installation-guides/mac/node-mac.html) 
+   -`node -v`
+   -`npm -v`
+- open in terminal `node jsfile.js`
 
 ## 7 fundamental data types in JavaScript: 
 ### strings, numbers, booleans, null, undefined, symbol, and object.
