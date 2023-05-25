@@ -4,7 +4,10 @@
 # Run JavaScript from Terminal/Shell
 - Navigate to desired folder
 - Open a terminal window
-- [have node installed](https://treehouse.github.io/installation-guides/mac/node-mac.html) 
+- [have node installed](https://treehouse.github.io/installation-guides/mac/node-mac.html)
+- First list item
+   - First nested list item
+     - Second nested list item
   -`node -v`
   -`npm -v`
 - open in terminal `node jsfile.js`
