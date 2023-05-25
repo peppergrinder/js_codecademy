@@ -236,6 +236,13 @@ function monitorCount(rows, columns) {
 console.log(monitorCount(5,4))
 ```
 ### Function expressions (anonymous)
+Anonymous functions in JavaScript do not have a name property. They can be defined using the function keyword, or as an arrow function.
+```JavaScript
+// Anonymous function
+const rocketToMars = function() {
+  return 'BOOM!';
+}
+```
 ```JavaScript
 const plantNeedsWater = function(day) {
   if (day === 'Wednesday') {
