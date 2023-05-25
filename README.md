@@ -14,6 +14,7 @@
 - [Functions](#functions)
    - [Function expressions](#function-expressions-anonymous)
    - [Arrow functions](#arrow-functions)
+   - [Concise Body Arrow Functions](#concise-body-arrow-functions)
 
 ## Run JavaScript from Terminal/Shell
 - Navigate to desired folder
@@ -201,6 +202,17 @@ switch (athleteFinalPosition) {
 }
 ```
 ## Functions
+A function is a reusable set of statements to perform a task or calculate a value. Functions can be passed one or more values and can return a value at the end of their execution. In order to use a function, you must define it somewhere in the scope where you wish to call it.
+Arguments are values passed into a function when it is called.
+```JavaScript
+// Defining the function:
+function sum(num1, num2) {
+  return num1 + num2;
+}
+ 
+// Calling the function:
+sum(3, 6); // 9
+```
 ```JavaScript
 function sayThanks(name) {
   console.log('Thank you for your purchase '+ name +'! We appreciate your business.');
@@ -246,6 +258,37 @@ const plantNeedsWater2 = (day) => {
 console.log(plantNeedsWater2('Wednesday'));
 ```
 ### Concise Body Arrow Functions
+Concise body syntax (with one parameter) does not use parentheses, curly braces, or the `return` keyword.
 ```JavaScript
 const plantNeedsWater3 = day => day === 'Wednesday' ? true : false;
+```
+```JavaScript
+const areaOfCircle = radius => Math.PI * radius * radius;
+```
+Arrow function expressions were introduced in ES6. These expressions are clean and concise. The syntax for an arrow function expression does not require the function keyword and uses a fat arrow => to separate the parameter(s) from the body.
+- Arrow functions with a single parameter do not require () around the parameter list.
+- Arrow functions with a single expression can use the concise function body which returns the result of the expression without the return keyword.
+```JavaScript
+// Arrow function with two parameters 
+const sum = (firstParam, secondParam) => { 
+  return firstParam + secondParam; 
+}; 
+console.log(sum(2,5)); // Prints: 7 
+ 
+// Arrow function with no parameters 
+const printHello = () => { 
+  console.log('hello'); 
+}; 
+printHello(); // Prints: hello
+ 
+// Arrow functions with a single parameter 
+const checkWeight = weight => { 
+  console.log(`Baggage weight : ${weight} kilograms.`); 
+}; 
+checkWeight(25); // Prints: Baggage weight : 25 kilograms.
+ 
+ 
+// Concise arrow functions
+const multiply = (a, b) => a * b; 
+console.log(multiply(2, 30)); // Prints: 60 
 ```
