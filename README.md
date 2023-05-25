@@ -4,9 +4,9 @@
 # Run JavaScript from Terminal/Shell
 - Navigate to desired folder
 - Open a terminal window
-- [have nodes installed](https://treehouse.github.io/installation-guides/mac/node-mac.html) 
-   -`node -v`
-   -`npm -v`
+- [have node installed](https://treehouse.github.io/installation-guides/mac/node-mac.html) 
+  -`node -v`
+  -`npm -v`
 - open in terminal `node jsfile.js`
 
 ## 7 fundamental data types in JavaScript: 
