@@ -1,7 +1,21 @@
-# bucket full of scripts from js_codecademy course
-### https://www.codecademy.com/learn/introduction-to-javascript
+# bucket full of scripts from [js_codecademy](https://www.codecademy.com/learn/introduction-to-javascript)
 
-# Run JavaScript from Terminal/Shell
+# Contents
+- [Setup Shell](#run-javascript-from-terminalshell)
+- [7 data types](#7-fundamental-data-types-in-javascript)
+- [Temperature converter](#temperature-conversions)
+- [Dog Years](#dog-years)
+- [Conditional Statements](#conditional-statements)
+- [Logical Operators](#logical-operators--and--or-negate-true-becomes-false-and-vice-versa)
+- [Short Circuit Evaluation](#use-short-circuit-evaluation-to-assign-writingutensil-variable-below)
+- [Ternary Operator](#ternary-operator-shorthand-for-ifelse)
+- [Else If](#else-if-statements)
+- [Switch](#the-switch-keyword)
+- [Functions](#functions)
+   - [Function expressions](#function-expressions-anonymous)
+   - [Arrow functions](#arrow-functions)
+
+## Run JavaScript from Terminal/Shell
 - Navigate to desired folder
 - Open a terminal window
 - [have node installed](https://treehouse.github.io/installation-guides/mac/node-mac.html)
@@ -209,7 +223,7 @@ function monitorCount(rows, columns) {
 
 console.log(monitorCount(5,4))
 ```
-## Function expressions (anonymous)
+### Function expressions (anonymous)
 ```JavaScript
 const plantNeedsWater = function(day) {
   if (day === 'Wednesday') {
@@ -220,7 +234,7 @@ const plantNeedsWater = function(day) {
 };
 console.log(plantNeedsWater('Tuesday'));
 ```
-## Arrow functions
+### Arrow functions
 ```JavaScript
 const plantNeedsWater2 = (day) => {
   if (day === 'Wednesday') {
@@ -231,7 +245,7 @@ const plantNeedsWater2 = (day) => {
 };
 console.log(plantNeedsWater2('Wednesday'));
 ```
-## Concise Body Arrow Functions
+### Concise Body Arrow Functions
 ```JavaScript
 const plantNeedsWater3 = day => day === 'Wednesday' ? true : false;
 ```
