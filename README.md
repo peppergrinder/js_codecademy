@@ -19,6 +19,7 @@
    - [Global Variables](#global-variables)
    - [Block Scoped Variables](#block-scoped-variables)
    - [Scope](#scope)
+   - [Scope recap](#scope-recap)
 
 ## Run JavaScript from Terminal/Shell
 - Navigate to desired folder
