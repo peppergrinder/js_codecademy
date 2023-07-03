@@ -19,7 +19,17 @@
    - [Global Variables](#global-variables)
    - [Block Scoped Variables](#block-scoped-variables)
    - [Scope](#scope)
+   - [Scope benefits](#scope-benefits)
    - [Scope recap](#scope-recap)
+- [Arrays](#arrays)
+   - [Create an Array](#create-an-array-literal)
+   - [Accessing Elements](#accessing-elements)
+   - [Updating Elements](#update-elements)
+   - [The .lenght Propery](#the-lenght-property)
+   - [The .push Method](#the-push-method)
+   - [The .pop Method](#the-pop-method)
+   - [More Array Methods](#more-array-methods)
+- [Arrays and Functions](#arrays-and-functions)
 
 ## Run JavaScript from Terminal/Shell
 - Navigate to desired folder
@@ -351,6 +361,15 @@ function myFunction() {
  
 // Code here can't use pizzaName
 ```
+### Scope benefits
+Given the challenges with global variables and scope pollution, we should follow best practices for scoping our variables as tightly as possible using block scope.
+
+Tightly scoping your variables will greatly improve your code in several ways:
+- It will make your code more legible since the blocks will organize your code into discrete sections.
+- It makes your code more understandable since it clarifies which variables are associated with different parts of the program rather than having to keep track of them line after line!
+- It’s easier to maintain your code, since your code will be modular.
+- It will save memory in your code because it will cease to exist after the block finishes running.
+
 ### Scope recap
 - **Scope** refers to where variables can be accessed throughout the program, and is determined by where and how they are declared.
 - **Blocks** are statements that exist within curly braces {}.
@@ -360,3 +379,87 @@ Block scope refers to the context within which variables are accessible only wit
 - **Local variables** are variables that exist within block scope.
 Global namespace is the space in our code that contains globally scoped information.
 - **Scope pollution** is when too many variables exist in a namespace or variable names are reused.
+
+## [Arrays](https://www.codecademy.com/resources/docs/javascript/arrays)
+Arrays are JavaScript’s way of making lists. Arrays can store any data types (including strings, numbers, and booleans). Like lists, arrays are ordered, meaning each item has a numbered position.
+```JavaScript
+let concepts = ['creating arrays', 'array structures', 'array manipulation'];
+```
+### Create an array (literal)
+```JavaScript
+const hobbies = ['one', 'two', 'three'];
+console.log(hobbies);
+```
+### Accessing Elements
+Each element in an array has a numbered position known as its index. We can access individual items using their index, which is similar to referencing an item in a list based on the item’s position.
+
+Arrays in JavaScript are zero-indexed, meaning the positions start counting from 0 rather than 1. Therefore, the first item in an array will be at position 0. Let’s see how we could access an element in an array:
+```JavaScript
+const hobbies = ['one', 'two', 'three'];
+console.log(hobbies[2]);
+```
+#### Update Elements
+```JavaScript
+let seasons = ['Winter', 'Spring', 'Summer', 'Fall'];
+ 
+seasons[3] = 'Autumn';
+console.log(seasons); 
+//Output: ['Winter', 'Spring', 'Summer', 'Autumn']
+```
+#### The .lenght property
+One of an array’s built-in properties is length and it returns the number of items in the array. We access the .length property just like we do with strings.
+```JavaScript
+const newYearsResolutions = ['Keep a journal', 'Take a falconry class'];
+ 
+console.log(newYearsResolutions.length);
+// Output: 2
+
+```
+#### The .push() Method
+One method, `.push()`, allows us to add items to the end of an array.
+```JavaScript
+const itemTracker = ['item 0', 'item 1', 'item 2'];
+ 
+itemTracker.push('item 3', 'item 4');
+ 
+console.log(itemTracker); 
+// Output: ['item 0', 'item 1', 'item 2', 'item 3', 'item 4'];
+```
+#### The .pop() Method
+[.pop()](https://www.codecademy.com/resources/docs/javascript/arrays/pop?page_ref=catalog), removes the last item of an array.
+```JavaScript
+const newItemTracker = ['item 0', 'item 1', 'item 2'];
+ 
+const removed = newItemTracker.pop();
+ 
+console.log(newItemTracker); 
+// Output: [ 'item 0', 'item 1' ]
+console.log(removed);
+// Output: item 2
+```
+- In the example above, calling `.pop()` on the newItemTracker array removed item 2 from the end.
+- `.pop()` does not take any arguments, it simply removes the last element of newItemTracker.
+- `.pop()` returns the value of the last element. In the example, we store the returned value in a variable removed to be used for later.
+- `.pop()` is a method that mutates the initial array.
+
+#### [More Array Methods](https://www.codecademy.com/resources/docs/javascript/arrays)
+Some arrays methods that are available to JavaScript developers include: `.join()`, `.slice()`, `.splice()`, `.shift()`, `.unshift()`, and `.concat()` amongst many others. Using these built-in methods makes it easier to do some common tasks when working with arrays.
+```JavaScript
+const groceryList = ['orange juice', 'bananas', 'coffee beans', 'brown rice', 'pasta', 'coconut oil', 'plantains'];
+
+groceryList.shift();
+//removes the last array element
+groceryList.unshift('popcorn');
+//adds a new first array element
+console.log(groceryList);
+
+console.log(groceryList.slice(1, 4));
+//console.log(array.method(first, last+1));
+
+console.log(groceryList);
+
+const pastaIndex = groceryList.indexOf('pasta');
+console.log(pastaIndex);
+```
+
+### Arrays and Functions
