@@ -30,6 +30,7 @@
    - [The .pop Method](#the-pop-method)
    - [More Array Methods](#more-array-methods)
 - [Arrays and Functions](#arrays-and-functions)
+   - [Nested Arrays](#nested-arrays)
 
 ## Run JavaScript from Terminal/Shell
 - Navigate to desired folder
@@ -463,3 +464,45 @@ console.log(pastaIndex);
 ```
 
 ### Arrays and Functions
+When you pass an array into a function, if the array is mutated inside the function, that change will be maintained outside the function as well. You might also see this concept explained as pass-by-reference since what we’re actually passing to the function is a reference to where the variable memory is stored and changing the memory.
+```JavaScript
+const concept = ['arrays', 'can', 'be', 'mutated'];
+
+function changeArr(arr){
+  arr[3] = 'MUTATED';
+}
+
+changeArr(concept);
+
+console.log(concept);
+
+function removeElement(newArr){
+  newArr.pop();
+}
+
+removeElement(concept);
+
+console.log(concept);
+```
+#### Nested Arrays
+Arrays can store other arrays. When an array contains another array it is known as a nested array. 
+```JavaScript
+const nestedArr = [[1], [2, 3]];
+ 
+console.log(nestedArr[1]); // Output: [2, 3]
+console.log(nestedArr[1][0]); // Output: 2
+```
+#### Arrays recap
+- Arrays are lists that store data in JavaScript.
+- Arrays are created with brackets [].
+- Each item inside of an array is at a numbered position, or index, starting at 0.
+- We can access one item in an array using its index, with syntax like: `myArray[0]`.
+- We can also change an item in an array using its index, with syntax like `myArray[0] = 'new string';`
+- Arrays have a length property, which allows you to see how many items are in an array.
+- Arrays have their own methods, including `.push()` and `.pop()`, which add and remove items from an array, respectively.
+- Arrays have many methods that perform different tasks, such as `.slice()` and `.shift()`, you can find documentation at the Mozilla Developer Network website.
+- Some built-in methods are mutating, meaning the method will change the array, while others are not mutating. You can always check the documentation.
+- Variables that contain arrays can be declared with let or const. Even when declared with const, arrays are still mutable. However, a variable declared with const cannot be reassigned.
+- Arrays mutated inside of a function will keep that change even outside the function.
+- Arrays can be nested inside other arrays.
+- To access elements in nested arrays chain indices using bracket notation.
