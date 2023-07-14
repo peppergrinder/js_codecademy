@@ -31,6 +31,7 @@
    - [More Array Methods](#more-array-methods)
 - [Arrays and Functions](#arrays-and-functions)
    - [Nested Arrays](#nested-arrays)
+   - [Array recap](#arrays-recap)
 
 ## Run JavaScript from Terminal/Shell
 - Navigate to desired folder
@@ -449,7 +450,7 @@ Some arrays methods that are available to JavaScript developers include: `.join(
 const groceryList = ['orange juice', 'bananas', 'coffee beans', 'brown rice', 'pasta', 'coconut oil', 'plantains'];
 
 groceryList.shift();
-//removes the last array element
+//removes the first array element
 groceryList.unshift('popcorn');
 //adds a new first array element
 console.log(groceryList);
