@@ -32,6 +32,10 @@
 - [Arrays and Functions](#arrays-and-functions)
    - [Nested Arrays](#nested-arrays)
    - [Array recap](#arrays-recap)
+- [Loops](#loops)
+    - [The For Loop](#the-for-loop)
+    - [The While Loop](#the-while-loop)
+    - [Do...While Statements](#dowhile-statements)
 
 ## Run JavaScript from Terminal/Shell
 - Navigate to desired folder
@@ -150,6 +154,8 @@ if (hungerLevel <= 7) {
 };
 ```
 ## Logical Operators: && (and), || (or), !(negate= true becomes false and vice versa)
+`===` is/equals
+`!==` is not
 ```JavaScript
 let mood = 'sleepy';
 let tirednessLevel = 6;
@@ -428,7 +434,7 @@ console.log(itemTracker);
 // Output: ['item 0', 'item 1', 'item 2', 'item 3', 'item 4'];
 ```
 #### The .pop() Method
-[.pop()](https://www.codecademy.com/resources/docs/javascript/arrays/pop?page_ref=catalog), removes the last item of an array.
+[.pop()](https://www.codecademy.com/resources/docs/javascript/arrays/pop?page_ref=catalog), removes the last item of an array and returns that element.
 ```JavaScript
 const newItemTracker = ['item 0', 'item 1', 'item 2'];
  
@@ -456,7 +462,7 @@ groceryList.unshift('popcorn');
 console.log(groceryList);
 
 console.log(groceryList.slice(1, 4));
-//console.log(array.method(first, last+1));
+//returns items from index 1 to 4 (3 values in this case)  ['coffee beans', 'brown rice', 'pasta']
 
 console.log(groceryList);
 
@@ -476,6 +482,7 @@ function changeArr(arr){
 changeArr(concept);
 
 console.log(concept);
+//['arrays', 'can', 'be', 'MUTATED']
 
 function removeElement(newArr){
   newArr.pop();
@@ -507,3 +514,84 @@ console.log(nestedArr[1][0]); // Output: 2
 - Arrays mutated inside of a function will keep that change even outside the function.
 - Arrays can be nested inside other arrays.
 - To access elements in nested arrays chain indices using bracket notation.
+
+## [Loops](https://www.codecademy.com/learn/introduction-to-javascript/modules/learn-javascript-loops/cheatsheet)
+A loop is a programming tool that repeats a set of instructions until a specified condition, called a stopping condition is reached. As a programmer, you’ll find that you rely on loops all the time! You’ll hear the generic term iterate when referring to loops; iterate simply means “to repeat”.
+
+When we need to reuse a task in our code, we often bundle that action in a function. Similarly, when we see that a process has to repeat multiple times in a row, we write a loop. Loops allow us to create efficient code that automates processes to make scalable, manageable programs.
+
+As illustrated in the diagram, loops iterate or repeat an action until a specific condition is met. When the condition is met, the loop stops and the computer moves on to the next part of the program.
+
+### The For Loop
+The typical `for`` loop includes an iterator variable that usually appears in all three expressions. The iterator variable is initialized, checked against the stopping condition, and assigned a new value on each loop iteration. Iterator variables can have any name, but it’s best practice to use a descriptive variable name.
+A for loop contains three expressions separated by ; inside the parentheses:
+
+1. an initialization starts the loop and can also be used to declare the iterator variable.
+2. a stopping condition is the condition that the iterator variable is evaluated against— if the condition evaluates to `true` the code block will run, and if it evaluates to `false`` the code will stop.
+3. an iteration statement is used to update the iterator variable on each loop.
+```JavaScript
+for (let counter = 0; counter < 4; counter++) {
+  console.log(counter);
+}
+// 0 1 2 3
+```
+Let’s break down the example:
+
+- The initialization is `let counter = 0`, so the loop will start counting at `0`.
+- The stopping condition is `counter < 4`, meaning the loop will run as long as the iterator variable, `counter`, is less than `4`.
+- The iteration statement is `counter++`. This means after each loop, the value of `counter` will increase by 1. For the first iteration `counter` will equal `0`, for the second iteration counter will equal `1`, and so on.
+- The code block is inside of the curly braces, `console.log(counter)`, will execute until the condition evaluates to `false`. The condition will be false when `counter` is greater than or equal to `4` — the point that the condition becomes false is sometimes called **the stop condition**.
+This for loop makes it possible to write 0, 1, 2, and 3 programmatically.
+
+### Nested Loops
+```JavaScript
+const bobsFollowers = ['Hank', 'Herbie', 'Hermann', 'Hofmann']
+const tinasFollowers = ['Hermine', 'Hermann', 'Hofmann']
+
+let mutualFollowers = [];
+//creates empty array
+
+for (let i = 0; i < bobsFollowers.length; i++) {
+  for (let j = 0; j < tinasFollowers.length; j++) {
+    if (bobsFollowers[i] === tinasFollowers[j]) {
+      mutualFollowers.push(tinasFollowers[j]);
+    }
+  }
+}
+console.log(mutualFollowers);
+// Hermann
+// Hofmann
+```
+
+### The While Loop
+```JavaScript
+// A for loop that prints 1, 2, and 3
+for (let counterOne = 1; counterOne < 4; counterOne++){
+  console.log(counterOne);
+}
+ 
+// A while loop that prints 1, 2, and 3
+let counterTwo = 1;
+while (counterTwo < 4) {
+  console.log(counterTwo);
+  counterTwo++;
+}
+```
+- The counterTwo variable is declared before the loop. We can access it inside our while loop since it’s in the global scope.
+- We start our loop with the keyword while followed by our stopping condition, or test condition. This will be evaluated before each round of the loop. While the condition evaluates to true, the block will continue to run. Once it evaluates to false the loop will stop.
+- Next, we have our loop’s code block which prints counterTwo to the console and increments counterTwo.
+
+In situations when we want a loop to execute an undetermined number of times, while loops are the best choice.
+```JavaScript
+const cards = ['diamond', 'spade', 'heart', 'club'];
+
+let currentCard;
+while (currentCard !== 'spade') {
+  currentCard = cards[Math.floor(Math.random() * 4)];
+  console.log(currentCard);
+}
+// Math.floor(Math.random() * 4) will give us a random number from 0 to 3. We’ll use this number to index the cards array, and assign the value of currentCard to a random element from that array.
+```
+In this example a new random card from array `cards` is taken until a card 'spade' is pulled.
+
+### Do...While Statements
