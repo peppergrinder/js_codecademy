@@ -36,6 +36,7 @@
     - [The For Loop](#the-for-loop)
     - [The While Loop](#the-while-loop)
     - [Do...While Statements](#dowhile-statements)
+    - [The 'break' Keyword](#the-break-keyword)
 
 ## Run JavaScript from Terminal/Shell
 - Navigate to desired folder
@@ -154,8 +155,8 @@ if (hungerLevel <= 7) {
 };
 ```
 ## Logical Operators: && (and), || (or), !(negate= true becomes false and vice versa)
-`===` is/equals
-`!==` is not
+- `===` is/equals
+- `!==` is not
 ```JavaScript
 let mood = 'sleepy';
 let tirednessLevel = 6;
@@ -595,3 +596,33 @@ while (currentCard !== 'spade') {
 In this example a new random card from array `cards` is taken until a card 'spade' is pulled.
 
 ### Do...While Statements
+A `do...while` statement says to do a task once and then keep doing it until a specified condition is no longer met.
+```JavaScript
+let cupsOfSugarNeeded = 4;
+let cupsAdded = 0;
+
+do {
+  cupsAdded++
+  console.log(cupsAdded + ' cup was added')
+} while (cupsAdded < cupsOfSugarNeeded);
+```
+Note that the `while` and `do...while` loop are different! Unlike the `while` loop, `do...while` will run at least once whether or not the condition evaluates to `true`.
+
+### The `break` keyword
+```JavaScript
+for (let i = 0; i < 99; i++) {
+  if (i > 2 ) {
+     break;
+  }
+  console.log('Banana.');
+}
+ 
+console.log('Orange you glad I broke out the loop!');
+```
+```JavaScript
+Banana.
+Banana.
+Banana.
+Orange you glad I broke out the loop!
+```
+`break` statements can be especially helpful when we’re looping through large data structures! With breaks, we can add test conditions besides the stopping condition, and exit the loop when they’re met.
