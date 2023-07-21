@@ -524,12 +524,12 @@ When we need to reuse a task in our code, we often bundle that action in a funct
 As illustrated in the diagram, loops iterate or repeat an action until a specific condition is met. When the condition is met, the loop stops and the computer moves on to the next part of the program.
 
 ### The For Loop
-The typical `for`` loop includes an iterator variable that usually appears in all three expressions. The iterator variable is initialized, checked against the stopping condition, and assigned a new value on each loop iteration. Iterator variables can have any name, but it’s best practice to use a descriptive variable name.
-A for loop contains three expressions separated by ; inside the parentheses:
+The typical `for` loop includes an iterator variable that usually appears in all three expressions. The iterator variable is initialized, checked against the stopping condition, and assigned a new value on each loop iteration. Iterator variables can have any name, but it’s best practice to use a descriptive variable name.
+A for loop contains three expressions separated by `;` inside the parentheses:
 
-1. an initialization starts the loop and can also be used to declare the iterator variable.
-2. a stopping condition is the condition that the iterator variable is evaluated against— if the condition evaluates to `true` the code block will run, and if it evaluates to `false` the code will stop.
-3. an iteration statement is used to update the iterator variable on each loop.
+1. The initialization defines where to begin the loop by declaring (or referencing) the iterator variable
+2. The stopping condition determines when to stop looping (when the expression evaluates to false)
+3. The iteration statement updates the iterator each time the loop is completed
 ```JavaScript
 for (let counter = 0; counter < 4; counter++) {
   console.log(counter);
@@ -543,6 +543,20 @@ Let’s break down the example:
 - The iteration statement is `counter++`. This means after each loop, the value of `counter` will increase by 1. For the first iteration `counter` will equal `0`, for the second iteration counter will equal `1`, and so on.
 - The code block is inside of the curly braces, `console.log(counter)`, will execute until the condition evaluates to `false`. The condition will be false when `counter` is greater than or equal to `4` — the point that the condition becomes false is sometimes called **the stop condition**.
 This for loop makes it possible to write 0, 1, 2, and 3 programmatically.
+
+### Reverse Loops
+A `for` loop can iterate “in reverse” by initializing the loop variable to the starting value, testing for when the variable hits the ending value, and decrementing (subtracting from) the loop variable at each iteration.
+```JavaScript
+const items = ['apricot', 'banana', 'cherry'];
+ 
+for (let i = items.length - 1; i >= 0; i -= 1) {
+  console.log(`${i}. ${items[i]}`);
+}
+ 
+// Prints: 2. cherry
+// Prints: 1. banana
+// Prints: 0. apricot
+```
 
 ### Nested Loops
 ```JavaScript
@@ -563,8 +577,41 @@ console.log(mutualFollowers);
 // Hermann
 // Hofmann
 ```
+```JavaScript
+for (let outer = 0; outer < 2; outer += 1) {
+  for (let inner = 0; inner < 3; inner += 1) {
+    console.log(`${outer}-${inner}`);
+  }
+}
+ 
+/* 
+Output:
+0-0
+0-1
+0-2
+1-0
+1-1
+1-2
+*/
+```
+```JavaScript
+const dividerLine = '------------------------------';
+const students = ['Joe', 'Ann', 'Tom', 'Bert'];
+ 
+console.log(dividerLine);
+for (let s = 0; s < students.length; s += 1) {
+  console.log('Student: ' + students[s]);
+  for (let a = 1; a <= 4; a += 1) {
+    console.log(`  Assignment ${a}: _______`);
+  }
+  console.log(dividerLine);
+}
+```
+A nested for loop is when a for loop runs inside another for loop.
+The inner loop will run all its iterations for each iteration of the outer loop.
 
 ### The While Loop
+The while loop creates a loop that is executed as long as a specified condition evaluates to true. The loop will continue to run until the condition evaluates to false. The condition is specified before the loop, and usually, some variable is incremented or altered in the while loop body to determine when the loop should stop.
 ```JavaScript
 // A for loop that prints 1, 2, and 3
 for (let counterOne = 1; counterOne < 4; counterOne++){
@@ -607,6 +654,18 @@ do {
 } while (cupsAdded < cupsOfSugarNeeded);
 ```
 Note that the `while` and `do...while` loop are different! Unlike the `while` loop, `do...while` will run at least once whether or not the condition evaluates to `true`.
+```JavaScript
+x = 0
+i = 0
+ 
+do {
+  x = x + i;
+  console.log(x)
+  i++;
+} while (i < 5);
+ 
+// Prints: 0 1 3 6 10
+```
 
 ### The `break` keyword
 ```JavaScript
