@@ -37,6 +37,12 @@
     - [The While Loop](#the-while-loop)
     - [Do...While Statements](#dowhile-statements)
     - [The 'break' Keyword](#the-break-keyword)
+- [Iterators](#iterators)
+    - [Higher-Order Functions](#higher-order-functions)
+        - ['forEach()` Method](#the-foreach-method)
+        - [The `.map()` Method](#the-map-method)
+        - [The `.filter()` Method](#the-filter-method)
+        - [The `.findIndex()` Method](#the-findindex-method)
 
 ## Run JavaScript from Terminal/Shell
 - Navigate to desired folder
@@ -323,7 +329,7 @@ checkWeight(25); // Prints: Baggage weight : 25 kilograms.
 const multiply = (a, b) => a * b; 
 console.log(multiply(2, 30)); // Prints: 60 
 ```
-## Variables
+## [Variables](https://www.codecademy.com/resources/docs/javascript/variables)
 ### Global variables
 JavaScript variables that are declared outside of blocks or functions can exist in the global scope, which means they are accessible throughout a program. Variables declared outside of smaller block or function scopes are accessible inside those smaller scopes.
 
@@ -685,3 +691,132 @@ Banana.
 Orange you glad I broke out the loop!
 ```
 `break` statements can be especially helpful when we’re looping through large data structures! With breaks, we can add test conditions besides the stopping condition, and exit the loop when they’re met.
+
+## [Iterators](https://www.codecademy.com/learn/introduction-to-javascript/modules/learn-javascript-iterators/cheatsheet)
+### Higher-Order Functions
+Higher-order functions are functions that accept other functions as arguments and/or return functions as output.
+```JavaScript
+const addTwo = num => {
+  return num + 2;
+}
+
+const checkConsistentOutput = (func, val) => {
+  let checkA = val + 2;
+  console.log("Value of val " + val);
+  console.log("Value of checkA: " + checkA);
+  let checkB = func(val);
+  return checkA === checkB ? func(val)
+  : 'inconsistent results';
+}
+
+console.log(checkConsistentOutput(addTwo, 4));
+```
+- Abstraction allows us to write complicated code in a way that’s easy to reuse, debug, and understand for human readers.
+- We can work with functions the same way we work with any other type of data, including reassigning them to new variables.
+- JavaScript functions are first-class [objects](https://www.codecademy.com/resources/docs/javascript/objects), so they have properties and [methods](https://www.codecademy.com/resources/docs/javascript/methods) like any other object.
+- Functions can be passed into other functions as parameters.
+- A higher-order function is a function that either accepts functions as parameters, returns a function, or both.
+
+### Iteration Methods
+at times referred to as iterators. Iterators are methods called on arrays to manipulate elements and return values.
+- `.forEach()`
+- `.map()`
+- `.filter()`
+
+```JavaScript
+const artists = ['Picasso', 'Kahlo', 'Matisse', 'Utamaro'];
+
+artists.forEach(artist => {
+  console.log(artist + ' is one of my favorite artists.');
+});
+
+const numbers = [1, 2, 3, 4, 5];
+
+const squareNumbers = numbers.map(number => {
+  return number * number;
+});
+
+console.log(squareNumbers);
+
+const things = ['desk', 'chair', 5, 'backpack', 3.14, 100];
+
+const onlyNumbers = things.filter(thing => {
+  return typeof thing === 'number';
+});
+
+console.log(onlyNumbers);
+```
+#### The `forEach()` Method
+`.forEach()` will execute the same code for each element of an array.
+[iterator anatomy](/resources/images/iterator_anatomy.svg)
+
+- `groceries.forEach()` calls the forEach method on the groceries array.
+- `.forEach()` takes an argument of callback function. Remember, a callback function is a function passed as an argument into another function.
+- `.forEach()` loops through the array and executes the callback function for each element. During each execution, the current element is passed as an argument to the callback function.
+- The return value for `.forEach()` will always be undefined.
+
+Another way to pass a callback for `.forEach()` is to use arrow function syntax.
+```JavaScript
+groceries.forEach(groceryItem => console.log(groceryItem));
+```
+We can also define a function beforehand to be used as the callback function.
+```JavaScript
+function printGrocery(element){
+  console.log(element);
+}
+ 
+groceries.forEach(printGrocery);
+```
+#### The `.map()`` Method
+When `.map()`` is called on an array, it takes an argument of a callback function and returns a new array! 
+```JavaScript
+const numbers = [1, 2, 3, 4, 5]; 
+ 
+const bigNumbers = numbers.map(number => {
+  return number * 10;
+});
+```
+- `numbers`` is an array of numbers.
+- `bigNumbers`` will store the return value of calling `.map()` on numbers.
+- `numbers.map` will iterate through each element in the `numbers` array and pass the element into the callback function.
+- `return number * 10` is the code we wish to execute upon each element in the array. This will save each value from the `numbers` array, multiplied by 10, to a new array.
+
+#### The .filter() Method
+Like `.map()`, `.filter()` returns a new array. However, `.filter()` returns an array of elements after filtering out certain elements from the original array. The callback function for the `.filter()` method should return `true` or `false` depending on the element that is passed to it. The elements that cause the callback function to return `true` are added to the new array. 
+```JavaScript
+const words = ['chair', 'music', 'pillow', 'brick', 'pen', 'door']; 
+ 
+const shortWords = words.filter(word => {
+  return word.length < 6;
+});
+```
+- `words` is an array that contains string elements.
+- `const shortWords = ` declares a new variable that will store the returned array from invoking `.filter()`.
+- The callback function is an arrow function that has a single parameter, word. Each element in the words array will be passed to this function as an argument.
+- `word.length < 6;` is the condition in the callback function. Any word from the words array that has fewer than 6 characters will be added to the shortWords array.
+```JavaScript
+console.log(words); // Output: ['chair', 'music', 'pillow', 'brick', 'pen', 'door']; 
+console.log(shortWords); // Output: ['chair', 'music', 'brick', 'pen', 'door']
+```
+```JavaScript
+const randomNumbers = [375, 200, 3.14, 7, 13, 852];
+
+// Call .filter() on randomNumbers below
+const smallNumbers = randomNumbers.filter(snum => {
+  if (snum < 250) {
+    return true;
+  }
+});
+
+const favoriteWords = ['nostalgia', 'hyperbole', 'fervent', 'esoteric', 'serene'];
+
+
+// Call .filter() on favoriteWords below
+const longFavoriteWords = favoriteWords.filter(fwrd => {
+  return fwrd.length > 7;
+});
+
+console.log(smallNumbers);
+console.log(longFavoriteWords);
+```
+#### The .findIndex() Method
