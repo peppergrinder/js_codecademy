@@ -43,6 +43,9 @@
         - [The `.map()` Method](#the-map-method)
         - [The `.filter()` Method](#the-filter-method)
         - [The `.findIndex()` Method](#the-findindex-method)
+        - [The `.reduce()` Method](#the-reduce-method)
+        - [Iterator Documentation](#iterator-documentation)
+        - [Choose the Right Iterator](#choose-the-right-iterator)
 
 ## Run JavaScript from Terminal/Shell
 - Navigate to desired folder
@@ -469,11 +472,11 @@ groceryList.unshift('popcorn');
 console.log(groceryList);
 
 console.log(groceryList.slice(1, 4));
-//returns items from index 1 to 4 (3 values in this case)  ['coffee beans', 'brown rice', 'pasta']
+//returns items from index 1 to 4 (3 values in this case)  ['bananas','coffee beans', 'brown rice']
 
 console.log(groceryList);
 
-const pastaIndex = groceryList.indexOf('pasta');
+const pastaIndex = groceryList.indexOf('pasta'); //returns the index number of 'pasta'
 console.log(pastaIndex);
 ```
 
@@ -515,9 +518,9 @@ console.log(nestedArr[1][0]); // Output: 2
 - We can also change an item in an array using its index, with syntax like `myArray[0] = 'new string';`
 - Arrays have a length property, which allows you to see how many items are in an array.
 - Arrays have their own methods, including `.push()` and `.pop()`, which add and remove items from an array, respectively.
-- Arrays have many methods that perform different tasks, such as `.slice()` and `.shift()`, you can find documentation at the Mozilla Developer Network website.
+- Arrays have many methods that perform different tasks, such as `.slice()` and `.shift()`, you can find documentation at the [Mozilla Developer Network](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) website.
 - Some built-in methods are mutating, meaning the method will change the array, while others are not mutating. You can always check the documentation.
-- Variables that contain arrays can be declared with let or const. Even when declared with const, arrays are still mutable. However, a variable declared with const cannot be reassigned.
+- Variables that contain arrays can be declared with `let` or `const`. Even when declared with `const`, arrays are still mutable. However, a variable declared with `const` cannot be reassigned.
 - Arrays mutated inside of a function will keep that change even outside the function.
 - Arrays can be nested inside other arrays.
 - To access elements in nested arrays chain indices using bracket notation.
@@ -696,6 +699,21 @@ Orange you glad I broke out the loop!
 ### Higher-Order Functions
 Higher-order functions are functions that accept other functions as arguments and/or return functions as output.
 ```JavaScript
+//simplified example
+const addTwo = num => {
+  return num + 2;
+}
+
+const higherOrder = (func, val) => {
+  let funcCaller = func(val);
+  return func(val);
+}
+
+console.log(higherOrder(addTwo, 6));
+```
+
+```JavaScript
+//full example
 const addTwo = num => {
   return num + 2;
 }
@@ -719,9 +737,12 @@ console.log(checkConsistentOutput(addTwo, 4));
 
 ### Iteration Methods
 at times referred to as iterators. Iterators are methods called on arrays to manipulate elements and return values.
-- `.forEach()`
-- `.map()`
-- `.filter()`
+- `.forEach()` is used to execute the same code on every element in an array but does not change the array and returns undefined.
+- `.map()` executes the same code on every element in an array and returns a new array with the updated elements.
+- `.filter()` checks every element in an array to see if it meets certain criteria and returns a new array with the elements that return truthy for the criteria.
+- `.findIndex()` returns the index of the first element of an array that satisfies a condition in the callback function. It returns -1 if none of the elements in the array satisfies the condition.
+- `.reduce()` iterates through an array and takes the values of the elements and returns a single value.
+- All iterator methods take a callback function, which can be a pre-defined function, a function expression, or an arrow function.
 
 ```JavaScript
 const artists = ['Picasso', 'Kahlo', 'Matisse', 'Utamaro'];
@@ -767,8 +788,8 @@ function printGrocery(element){
  
 groceries.forEach(printGrocery);
 ```
-#### The `.map()`` Method
-When `.map()`` is called on an array, it takes an argument of a callback function and returns a new array! 
+#### The `.map()` Method
+When `.map()` is called on an array, it takes an argument of a callback function and returns a new array! 
 ```JavaScript
 const numbers = [1, 2, 3, 4, 5]; 
  
@@ -776,12 +797,12 @@ const bigNumbers = numbers.map(number => {
   return number * 10;
 });
 ```
-- `numbers`` is an array of numbers.
-- `bigNumbers`` will store the return value of calling `.map()` on numbers.
+- `numbers` is an array of numbers.
+- `bigNumbers` will store the return value of calling `.map()` on `numbers`.
 - `numbers.map` will iterate through each element in the `numbers` array and pass the element into the callback function.
 - `return number * 10` is the code we wish to execute upon each element in the array. This will save each value from the `numbers` array, multiplied by 10, to a new array.
 
-#### The .filter() Method
+#### The `.filter()` Method
 Like `.map()`, `.filter()` returns a new array. However, `.filter()` returns an array of elements after filtering out certain elements from the original array. The callback function for the `.filter()` method should return `true` or `false` depending on the element that is passed to it. The elements that cause the callback function to return `true` are added to the new array. 
 ```JavaScript
 const words = ['chair', 'music', 'pillow', 'brick', 'pen', 'door']; 
@@ -819,4 +840,101 @@ const longFavoriteWords = favoriteWords.filter(fwrd => {
 console.log(smallNumbers);
 console.log(longFavoriteWords);
 ```
-#### The .findIndex() Method
+#### The `.findIndex()` Method
+Calling `.findIndex()` on an array will return the index of the **first** element that evaluates to true in the callback function.
+```JavaScript
+const animals = ['hippo', 'tiger', 'lion', 'seal', 'cheetah', 'monkey', 'salamander', 'elephant'];
+
+const foundAnimal = animals.findIndex(fant => {
+  return fant === 'elephant';
+})
+
+console.log(foundAnimal); // 7
+console.log(animals[7]); // elephant
+
+const startsWithS = animals.findIndex(animal => {
+  return animal[0] === 's' ? true : false;
+});
+
+console.log(startsWithS); // 3
+console.log('First animal that starts with S: ' + animals[3]); // seal
+```
+#### The `.reduce()` Method
+The `.reduce()` method returns a single value after iterating through the elements of an array, thereby reducing the array.
+```JavaScript
+const numbers = [1, 2, 4, 10];
+
+const summedNums = numbers.reduce((accumulator, currentValue) => {
+  console.log('The value of accumulator: ', accumulator);
+  console.log('The value of currentValue: ', currentValue);
+  return accumulator + currentValue
+})
+
+console.log(summedNums) // Output: 17
+```
+Here are the values of accumulator and currentValue as we iterate through the numbers array:
+| Iteration | `accumulator` | `currentValue` | `return value` |
+| :-------- | :------------ | :------------- | :------------- |
+| First     | 1             | 2              | 3              |
+| Second    | 3             | 4              | 7              |
+| Third     | 7             | 10             | 17             |
+
+Now let’s go over the use of `.reduce()` from the example above:
+
+- `numbers` is an array that contains numbers.
+- `summedNums` is a variable that stores the returned value of invoking `.reduce()` on numbers.
+- `numbers.reduce()` calls the `.reduce()` method on the numbers array and takes in a callback function as argument.
+- The callback function has two parameters, `accumulator` and `currentValue`. The value of `accumulator` starts off as the value of the first element in the array and the `currentValue` starts as the second element. To see the value of `accumulator` and `currentValue` change, review the chart above.
+- As `.reduce()` iterates through the array, the return value of the callback function becomes the `accumulator` value for the next iteration, `currentValue` takes on the value of the current element in the looping process.
+
+The `.reduce()` method can also take an optional second parameter to set an initial value for `accumulator` (remember, the first argument is the callback function!). For instance:
+```JavaScript
+const numbers = [1, 2, 4, 10];
+
+const summedNums = numbers.reduce((accumulator, currentValue) => {
+  return accumulator + currentValue
+}, 100)  // <- Second argument for .reduce()
+
+console.log(summedNums); // Output: 117
+```
+Updated chart that accounts for the second argument of `100`:
+| Iteration | `accumulator` | `currentValue` | `return value` |
+| :-------- | :------------ | :------------- | :------------- |
+| First     | 100           | 1              | 101            |
+| Second    | 101           | 2              | 103            |
+| Third     | 103           | 4              | 107            |
+| Fouth     | 107           | 10             | 117            |
+
+---
+`.reduce` also works on letters:
+```JavaScript
+const cities = ['Orlando', 'Dubai', 'Edinburgh', 'Chennai', 'Accra', 'Denver', 'Eskisehir', 'Medellin', 'Yokohama'];
+
+const word = cities.reduce((acc, currVal) => {
+  return acc + currVal[0]
+  }, "C"); //CODECADEMY
+```
+---
+#### [Iterator Documentation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array#Iteration_methods)
+```JavaScript
+const words = ['unique', 'uncanny', 'pique', 'oxymoron', 'guise'];
+
+console.log(words.some(word => {
+  return word.length < 6;
+}));
+
+// Use filter to create a new array
+const interestingWords = words.filter((word) => {
+  return word.length > 5;
+});
+
+// check if every element has more than 5 characters
+
+console.log(interestingWords.every((word) => {
+  return word.length > 5
+ } ));
+
+console.log(interestingWords);
+```
+#### Choose the Right Iterator
+There are many iteration [methods](https://www.codecademy.com/resources/docs/javascript/methods) you can choose. In addition to learning the correct syntax for the use of iteration methods, it is also important to learn how to choose the correct method for different scenarios.
