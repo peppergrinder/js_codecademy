@@ -44,8 +44,9 @@
         - [The `.filter()` Method](#the-filter-method)
         - [The `.findIndex()` Method](#the-findindex-method)
         - [The `.reduce()` Method](#the-reduce-method)
-        - [Iterator Documentation](#iterator-documentation)
-        - [Choose the Right Iterator](#choose-the-right-iterator)
+    - [Iterator Documentation](#iterator-documentation)
+    - [Choose the Right Iterator](#choose-the-right-iterator)
+    - [Iterator Review](#iterator-review)
 
 ## Run JavaScript from Terminal/Shell
 - Navigate to desired folder
@@ -735,13 +736,32 @@ console.log(checkConsistentOutput(addTwo, 4));
 - Functions can be passed into other functions as parameters.
 - A higher-order function is a function that either accepts functions as parameters, returns a function, or both.
 
+### Callback Functions
+In JavaScript, a callback function is a function that is passed into another function as an argument. This function can then be invoked during the execution of that higher order function (that it is an argument of).
+
+Since, in JavaScript, functions are objects, functions can be passed as arguments.
+```JavaScript
+const isEven = (n) => {
+  return n % 2 == 0;
+}
+
+let printMsg = (evenFunc, num) => {
+  const isNumEven = evenFunc(num);
+  console.log(`The number ${num} is an even number: ${isNumEven}.`)
+}
+
+// Pass in isEven as the callback function
+printMsg(isEven, 4); 
+// Prints: The number 4 is an even number: True.
+```
+
 ### Iteration Methods
 at times referred to as iterators. Iterators are methods called on arrays to manipulate elements and return values.
-- `.forEach()` is used to execute the same code on every element in an array but does not change the array and returns undefined.
-- `.map()` executes the same code on every element in an array and returns a new array with the updated elements.
-- `.filter()` checks every element in an array to see if it meets certain criteria and returns a new array with the elements that return truthy for the criteria.
-- `.findIndex()` returns the index of the first element of an array that satisfies a condition in the callback function. It returns -1 if none of the elements in the array satisfies the condition.
-- `.reduce()` iterates through an array and takes the values of the elements and returns a single value.
+- [`.forEach()`](#the-foreach-method) is used to execute the same code on every element in an array but does not change the array and returns undefined.
+- [`.map()`](#the-map-method) executes the same code on every element in an array and returns a new array with the updated elements.
+- [`.filter()`](#the-filter-method) checks every element in an array to see if it meets certain criteria and returns a new array with the elements that return truthy for the criteria.
+- [`.findIndex()`](#the-findindex-method) returns the index of the first element of an array that satisfies a condition in the callback function. It returns -1 if none of the elements in the array satisfies the condition.
+- [`.reduce()`](#the-reduce-method) iterates through an array and takes the values of the elements and returns a single value.
 - All iterator methods take a callback function, which can be a pre-defined function, a function expression, or an arrow function.
 
 ```JavaScript
@@ -915,7 +935,7 @@ const word = cities.reduce((acc, currVal) => {
   }, "C"); //CODECADEMY
 ```
 ---
-#### [Iterator Documentation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array#Iteration_methods)
+### [Iterator Documentation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array#Iteration_methods)
 ```JavaScript
 const words = ['unique', 'uncanny', 'pique', 'oxymoron', 'guise'];
 
@@ -936,5 +956,52 @@ console.log(interestingWords.every((word) => {
 
 console.log(interestingWords);
 ```
-#### Choose the Right Iterator
+### Choose the Right Iterator
 There are many iteration [methods](https://www.codecademy.com/resources/docs/javascript/methods) you can choose. In addition to learning the correct syntax for the use of iteration methods, it is also important to learn how to choose the correct method for different scenarios.
+
+### Iterator Review
+**JavaScript Functions: First-Class Objects**
+```JavaScript
+//Assign a function to a variable originalFunc
+const originalFunc = (num) => { return num + 2 };
+
+//Re-assign the function to a new variable newFunc
+const newFunc = originalFunc;
+
+//Access the function's name property
+newFunc.name; //'originalFunc'
+
+//Return the function's body as a string
+newFunc.toString(); //'(num) => { return num + 2 }'
+
+//Add our own isMathFunction property to the function
+newFunc.isMathFunction = true;
+
+//Pass the function as an argument
+const functionNameLength = (func) => { return func.name.length }; 
+functionNameLength(originalFunc); //12
+
+//Return the function
+const returnFunc = () => { return newFunc };
+returnFunc(); //[Function: originalFunc]
+```
+JavaScript functions are first-class objects. Therefore:
+
+- They have built-in properties and methods, such as the name property and the .toString() method.
+- Properties and methods can be added to them.
+- They can be passed as arguments and returned from other functions.
+- They can be assigned to variables, array elements, and other objects.
+
+**Functions assigned to Variables**
+```JavaScript
+let plusFive = (number) => {
+  return number + 5;  
+};
+// f is assigned the value of plusFive
+let f = plusFive;
+
+plusFive(3); // 8
+// Since f has a function value, it can be invoked. 
+f(9); // 14
+```
+
