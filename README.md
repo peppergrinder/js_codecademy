@@ -47,6 +47,9 @@
     - [Iterator Documentation](#iterator-documentation)
     - [Choose the Right Iterator](#choose-the-right-iterator)
     - [Iterator Review](#iterator-review)
+- [Objects](#objects)
+    - [Creating Object Literals](#creating-object-literals)
+      - [Accessing Properties](#accessing-properties)
 
 ## Run JavaScript from Terminal/Shell
 - Navigate to desired folder
@@ -198,6 +201,8 @@ let favoritePhrase = 'Love That!';
 favoritePhrase === 'Love That!' ? console.log('I love that!')
 : console.log("I don't love that!");
 ```
+---
+[back to top](#contents)
 
 ## Else If Statements
 ```JavaScript
@@ -235,6 +240,9 @@ switch (athleteFinalPosition) {
     break;
 }
 ```
+---
+[back to top](#contents)
+
 ## Functions
 A function is a reusable set of statements to perform a task or calculate a value. Functions can be passed one or more values and can return a value at the end of their execution. In order to use a function, you must define it somewhere in the scope where you wish to call it.
 Arguments are values passed into a function when it is called.
@@ -333,6 +341,9 @@ checkWeight(25); // Prints: Baggage weight : 25 kilograms.
 const multiply = (a, b) => a * b; 
 console.log(multiply(2, 30)); // Prints: 60 
 ```
+---
+[back to top](#contents)
+
 ## [Variables](https://www.codecademy.com/resources/docs/javascript/variables)
 ### Global variables
 JavaScript variables that are declared outside of blocks or functions can exist in the global scope, which means they are accessible throughout a program. Variables declared outside of smaller block or function scopes are accessible inside those smaller scopes.
@@ -398,6 +409,8 @@ Block scope refers to the context within which variables are accessible only wit
 - **Local variables** are variables that exist within block scope.
 Global namespace is the space in our code that contains globally scoped information.
 - **Scope pollution** is when too many variables exist in a namespace or variable names are reused.
+---
+[back to top](#contents)
 
 ## [Arrays](https://www.codecademy.com/resources/docs/javascript/arrays)
 Arrays are JavaScript’s way of making lists. Arrays can store any data types (including strings, numbers, and booleans). Like lists, arrays are ordered, meaning each item has a numbered position.
@@ -480,6 +493,8 @@ console.log(groceryList);
 const pastaIndex = groceryList.indexOf('pasta'); //returns the index number of 'pasta'
 console.log(pastaIndex);
 ```
+---
+[back to top](#contents)
 
 ### Arrays and Functions
 When you pass an array into a function, if the array is mutated inside the function, that change will be maintained outside the function as well. You might also see this concept explained as pass-by-reference since what we’re actually passing to the function is a reference to where the variable memory is stored and changing the memory.
@@ -525,6 +540,8 @@ console.log(nestedArr[1][0]); // Output: 2
 - Arrays mutated inside of a function will keep that change even outside the function.
 - Arrays can be nested inside other arrays.
 - To access elements in nested arrays chain indices using bracket notation.
+---
+[back to top](#contents)
 
 ## [Loops](https://www.codecademy.com/learn/introduction-to-javascript/modules/learn-javascript-loops/cheatsheet)
 A loop is a programming tool that repeats a set of instructions until a specified condition, called a stopping condition is reached. As a programmer, you’ll find that you rely on loops all the time! You’ll hear the generic term iterate when referring to loops; iterate simply means “to repeat”.
@@ -695,6 +712,8 @@ Banana.
 Orange you glad I broke out the loop!
 ```
 `break` statements can be especially helpful when we’re looping through large data structures! With breaks, we can add test conditions besides the stopping condition, and exit the loop when they’re met.
+---
+[back to top](#contents)
 
 ## [Iterators](https://www.codecademy.com/learn/introduction-to-javascript/modules/learn-javascript-iterators/cheatsheet)
 ### Higher-Order Functions
@@ -925,7 +944,6 @@ Updated chart that accounts for the second argument of `100`:
 | Third     | 103           | 4              | 107            |
 | Fouth     | 107           | 10             | 117            |
 
----
 `.reduce` also works on letters:
 ```JavaScript
 const cities = ['Orlando', 'Dubai', 'Edinburgh', 'Chennai', 'Accra', 'Denver', 'Eskisehir', 'Medellin', 'Yokohama'];
@@ -1003,5 +1021,51 @@ let f = plusFive;
 plusFive(3); // 8
 // Since f has a function value, it can be invoked. 
 f(9); // 14
+```
+---
+[back to top](#contents)
+
+## Objects
+![Objects graph](/resources/images/javascript_object.svg "Objects Anatomy")
+### Creating Object Literals
+Objects can be assigned to variables just like any JavaScript type. We use curly braces, {}, to designate an object literal:
+```JavaScript
+let fasterShip = {
+  'Fuel Type' : 'Turbo Fuel',
+  color: 'silver'
+};
+```
+#### Accessing Properties
+![Dot Notation](/resources/images/object-dot-notation.svg "Dot Operator")
+```JavaScript
+let spaceship = {
+  homePlanet: 'Earth',
+  color: 'silver'
+};
+spaceship.homePlanet; // Returns 'Earth',
+spaceship.color; // Returns 'silver',
+```
+
+![Bracket Notation](/resources/images/object-access-bracket.svg "Using Brackets")
+We must use bracket notation when accessing keys that have numbers, spaces, or special characters in them. Without bracket notation in these situations, our code would throw an error.
+```JavaScript
+let spaceship = {
+  'Fuel Type' : 'Turbo Fuel',
+  'Active Mission' : true,
+  homePlanet : 'Earth', 
+  numCrew: 5
+ };
+
+let propName =  'Active Mission';
+
+let isActive = spaceship['Active Mission'];
+console.log(propName + ": " + isActive);
+```
+
+With bracket notation you can also use a variable inside the brackets to select the keys of an object. This can be especially helpful when working with functions:
+```JavaScript
+let returnAnyProp = (objectName, propName) => objectName[propName];
+ 
+returnAnyProp(spaceship, 'homePlanet'); // Returns 'Earth'
 ```
 
