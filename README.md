@@ -50,6 +50,8 @@
 - [Objects](#objects)
     - [Creating Object Literals](#creating-object-literals)
       - [Accessing Properties](#accessing-properties)
+      - [Property Assignment](#property-assignment)
+    - [Methods]
 
 ## Run JavaScript from Terminal/Shell
 - Navigate to desired folder
@@ -1037,6 +1039,7 @@ let fasterShip = {
 ```
 #### Accessing Properties
 ![Dot Notation](/resources/images/object-dot-notation.svg "Dot Operator")
+Using Dot Notation
 ```JavaScript
 let spaceship = {
   homePlanet: 'Earth',
@@ -1047,6 +1050,8 @@ spaceship.color; // Returns 'silver',
 ```
 
 ![Bracket Notation](/resources/images/object-access-bracket.svg "Using Brackets")
+Using Bracket Notation
+
 We must use bracket notation when accessing keys that have numbers, spaces, or special characters in them. Without bracket notation in these situations, our code would throw an error.
 ```JavaScript
 let spaceship = {
@@ -1068,4 +1073,28 @@ let returnAnyProp = (objectName, propName) => objectName[propName];
  
 returnAnyProp(spaceship, 'homePlanet'); // Returns 'Earth'
 ```
+#### Property Assignment
+Objects are mutable - 
+We can use either dot notation,` .`, or bracket notation, `[]`, and the assignment operator, `=` to add new key-value pairs to an object or change an existing property.
+![Property Assignment](/resources/images/object_property_assignment.svg "Property Assignment")
 
+It’s important to know that although we can’t reassign an object declared with const, we can still mutate it, meaning we can add new properties and change the properties that are there.
+```JavaScript
+const spaceship = {type: 'shuttle'};
+spaceship = {type: 'alien'}; // TypeError: Assignment to constant variable.
+spaceship.type = 'alien'; // Changes the value of the type property
+spaceship.speed = 'Mach 5'; // Creates a new key of 'speed' with a value of 'Mach 5'
+```
+You can delete a property from an object with the delete operator.
+```JavaScript
+const spaceship = {
+  'Fuel Type': 'Turbo Fuel',
+  homePlanet: 'Earth',
+  mission: 'Explore the universe' 
+};
+ 
+delete spaceship.mission;  // Removes the mission property
+delete spaceship['Fuel Type']; // Removes the 'Fuel Type' property
+```
+### Methods
+When the data stored on an object is a function we call that a method. A property is what an object has, while a method is what an object does.
