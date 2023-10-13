@@ -51,7 +51,11 @@
     - [Creating Object Literals](#creating-object-literals)
       - [Accessing Properties](#accessing-properties)
       - [Property Assignment](#property-assignment)
-    - [Methods]
+    - [Methods](#methods)
+    - [Nested Objects](#nested-objects)
+    - [Pass By Reference](#pass-by-reference)
+    - [Looping Through Objects](#looping-through-objects)
+    - [Objects Review](#objects-review)
 
 ## Run JavaScript from Terminal/Shell
 - Navigate to desired folder
@@ -1028,17 +1032,19 @@ f(9); // 14
 [back to top](#contents)
 
 ## Objects
+[cheatsheet](https://www.codecademy.com/learn/introduction-to-javascript/modules/learn-javascript-objects/cheatsheet)
 ![Objects graph](/resources/images/javascript_object.svg "Objects Anatomy")
 ### Creating Object Literals
 Objects can be assigned to variables just like any JavaScript type. We use curly braces, {}, to designate an object literal:
 ```JavaScript
 let fasterShip = {
-  'Fuel Type' : 'Turbo Fuel',
+  'Fuel Type' : 'Turbo Fuel', // separate with commas
   color: 'silver'
 };
 ```
 #### Accessing Properties
 ![Dot Notation](/resources/images/object-dot-notation.svg "Dot Operator")
+
 Using Dot Notation
 ```JavaScript
 let spaceship = {
@@ -1050,6 +1056,7 @@ spaceship.color; // Returns 'silver',
 ```
 
 ![Bracket Notation](/resources/images/object-access-bracket.svg "Using Brackets")
+
 Using Bracket Notation
 
 We must use bracket notation when accessing keys that have numbers, spaces, or special characters in them. Without bracket notation in these situations, our code would throw an error.
@@ -1098,3 +1105,132 @@ delete spaceship['Fuel Type']; // Removes the 'Fuel Type' property
 ```
 ### Methods
 When the data stored on an object is a function we call that a method. A property is what an object has, while a method is what an object does.
+Don’t forget to separate your methods with **commas** just as you would any other key-value pairs:
+```JavaScript
+let retreatMessage = 'We no longer wish to conquer your planet. It is full of dogs, which we do not care for.';
+
+const alienShip = {
+  retreat() {
+    console.log(retreatMessage)
+  },  // separate methods with commas
+  takeOff() {
+    console.log('Spim... Borp... Glix... Blastoff!')
+  }
+};
+
+alienShip.retreat();
+alienShip.takeOff();
+```
+### Nested Objects
+In application code, objects are often nested— an object might have another object as a property which in turn could have a property that’s an array of even more objects!
+```JavaScript
+let spaceship = {
+  passengers: [{name: 'Rocketman'}],
+  telescope: {
+    yearBuilt: 2018,
+    model: "91031-XLT",
+    focalLength: 2032 
+  },
+  crew: {
+    captain: { 
+      name: 'Sandra', 
+      degree: 'Computer Engineering', 
+      encourageTeam() { console.log('We got this!') },
+     'favorite foods': ['cookies', 'cakes', 'candy', 'spinach'] }
+  },
+  engine: {
+    model: "Nimbus2000"
+  },
+  nanoelectronics: {
+    computer: {
+      terabytes: 100,
+      monitors: "HD"
+    },
+    'back-up': {
+      battery: "Lithium",
+      terabytes: 50
+    }
+  }
+}; 
+
+let capFave = spaceship.crew.captain['favorite foods'][0]; // returns: cookies
+let firstPassenger = spaceship.passengers[0]; // returns: { name: 'Rocketman' }
+```
+### Pass By Reference
+Objects are *passed by reference*. This means when we pass a variable assigned to an object into a function as an argument, the computer interprets the parameter name as pointing to the space in memory holding that object. As a result, functions which change object properties actually mutate the object permanently (even when the object is assigned to a `const` variable).
+```JavaScript
+let spaceship = {
+  'Fuel Type' : 'Turbo Fuel',
+  homePlanet : 'Earth'
+};
+// change Fuel Type
+let greenEnergy = objectParam => {
+  objectParam['Fuel Type'] = 'avocado oil'
+};
+// add 'disabled' parameter holding the value 'true'
+let remotelyDisable = objectParam => {
+  objectParam.disabled = true;
+};
+greenEnergy(spaceship);
+remotelyDisable(spaceship);
+console.log(spaceship); // { 'Fuel Type': 'avocado oil', homePlanet: 'Earth', disabled: true }
+```
+### Looping Through Objects
+Loops are programming tools that repeat a block of code until a condition is met. We learned how to iterate through arrays using their numerical indexing, but the key-value pairs in objects aren’t ordered! JavaScript has given us alternative solution for iterating through objects with the [`for...in`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...in) syntax.
+```JavaScript
+let spaceship = {
+    crew: {
+    captain: { 
+        name: 'Lily', 
+        degree: 'Computer Engineering', 
+        cheerTeam() { console.log('You got this!') } 
+        },
+    'chief officer': { 
+        name: 'Dan', 
+        degree: 'Aerospace Engineering', 
+        agree() { console.log('I agree, captain!') } 
+        },
+    medic: { 
+        name: 'Clementine', 
+        degree: 'Physics', 
+        announce() { console.log(`Jets on!`) } },
+    translator: {
+        name: 'Shauna', 
+        degree: 'Conservation Science', 
+        powerFuel() { console.log('The tank is full!') } 
+        }
+    }
+}; 
+
+// for...in
+for (let crewMember in spaceship.crew) {
+  console.log(`${crewMember}: ${spaceship.crew[crewMember].name}`);
+}
+/* 
+captain: Lily
+chief officer: Dan
+medic: Clementine
+translator: Shauna 
+*/
+
+for (let crewMember in spaceship.crew) {
+  console.log(`${spaceship.crew[crewMember].name}: ${spaceship.crew[crewMember].degree}`);
+}
+/* 
+Lily: Computer Engineering
+Dan: Aerospace Engineering
+Clementine: Physics
+Shauna: Conservation Science 
+*/
+```
+## Objects Review
+
+- Objects store collections of key-value pairs.
+- Each key-value pair is a property—when a property is a function it is known as a method.
+- An object literal is composed of comma-separated key-value pairs surrounded by curly braces.
+- You can access, add or edit a property within an object by using dot notation or bracket notation.
+- We can add methods to our object literals using key-value syntax with anonymous function expressions as values or by using the new ES6 method syntax.
+- We can navigate complex, nested objects by chaining operators.
+- Objects are mutable—we can change their properties even when they’re declared with `const`.
+- Objects are passed by reference— when we make changes to an object passed into a function, those changes are permanent.
+- We can iterate through objects using the `For...in` syntax.
