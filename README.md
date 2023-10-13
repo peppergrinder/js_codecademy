@@ -56,6 +56,10 @@
     - [Pass By Reference](#pass-by-reference)
     - [Looping Through Objects](#looping-through-objects)
     - [Objects Review](#objects-review)
+- [Advanced Objects](#advanced-objects)
+    - [The `this` Keyword](#the-this-keyword)
+    - [Arrow Functions and this](#arrow-functions-and-this)
+    - [Privacy](#privacy)
 
 ## Run JavaScript from Terminal/Shell
 - Navigate to desired folder
@@ -1071,7 +1075,7 @@ let spaceship = {
 let propName =  'Active Mission';
 
 let isActive = spaceship['Active Mission'];
-console.log(propName + ": " + isActive);
+console.log(propName + ": " + isActive); // Returns 'Active Mission: true'
 ```
 
 With bracket notation you can also use a variable inside the brackets to select the keys of an object. This can be especially helpful when working with functions:
@@ -1223,7 +1227,7 @@ Clementine: Physics
 Shauna: Conservation Science 
 */
 ```
-## Objects Review
+### Objects Review
 
 - Objects store collections of key-value pairs.
 - Each key-value pair is a property—when a property is a function it is known as a method.
@@ -1234,3 +1238,47 @@ Shauna: Conservation Science
 - Objects are mutable—we can change their properties even when they’re declared with `const`.
 - Objects are passed by reference— when we make changes to an object passed into a function, those changes are permanent.
 - We can iterate through objects using the `For...in` syntax.
+---
+[back to top](#contents)
+
+## Advanced Objects
+- how to use the `this` keyword.
+- conveying privacy in JavaScript methods.
+- defining getters and setters in objects.
+- creating factory functions.
+- using destructuring techniques.
+
+### The `this` Keyword
+```JavaScript
+const goat = {
+  dietType: 'herbivore',
+  makeSound() {
+    console.log('baaa');
+  },
+  diet() {
+    console.log(this.dietType);
+  }
+};
+
+goat.diet(); 
+// Output: herbivore
+```
+
+```JavaScript
+const robot = {
+  model: '1E78V2',
+  energyLevel: 100,
+  provideInfo() {
+    return `I am ${this.model} and my current energy level is ${this.energyLevel}`
+  }
+};
+
+console.log(robot.provideInfo());
+```
+### Arrow Functions and this
+**Avoid using arrow functions when using `this` in a method!**
+
+We saw in the previous exercise that for a method, the calling object is the object the method belongs to. If we use the this keyword in a method then the value of this is the calling object.
+Arrow functions inherently bind, or tie, an already defined `this` value to the function itself that is NOT the calling object.
+
+### Privacy
