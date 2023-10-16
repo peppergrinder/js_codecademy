@@ -6,7 +6,9 @@
 - [Temperature converter](#temperature-conversions)
 - [Dog Years](#dog-years)
 - [Conditional Statements](#conditional-statements)
-- [Logical Operators](#logical-operators--and--or-negate-true-becomes-false-and-vice-versa)
+- [JS Operators](#js-operators)
+   - [Types of JavaScript Operators](#types-of-javascript-operators)
+   - [Logical Operators](#logical-operators--and--or-negate-true-becomes-false-and-vice-versa)
 - [Short Circuit Evaluation](#use-short-circuit-evaluation-to-assign-writingutensil-variable-below)
 - [Ternary Operator](#ternary-operator-shorthand-for-ifelse)
 - [Else If](#else-if-statements)
@@ -177,7 +179,57 @@ if (hungerLevel <= 7) {
   console.log('We can eat later!');
 };
 ```
-## Logical Operators: && (and), || (or), !(negate= true becomes false and vice versa)
+
+## JS Operators
+[Cheatsheet JavaScript Operators](https://www.w3schools.com/js/js_operators.asp)
+
+### Types of JavaScript Operators
+- Arithmetic Operators
+- Assignment Operators
+- Comparison Operators
+- String Operators
+- Logical Operators
+- Bitwise Operators
+- Ternary Operators
+- Type Operators
+
+
+| Operator                | Description                     | 
+| :---------------------- | :------------------------------ |
+| [**Arithmetic Operators**](https://www.w3schools.com/js/js_arithmetic.asp) |
+| `+`	| Addition |
+| `-` |	Subtraction |
+| `*` |	Multiplication |
+| `**` | Exponentiation (ES2016) |
+| `/` |	Division |
+| `%` |	Modulus (Division Remainder) |
+| `++` | Increment |
+| `--` | Decrement |
+| [**Assignment Operators**](https://www.w3schools.com/js/js_assignment.asp) | Example | Same As |
+| `=` |	x = y |	x = y |
+| `+=` | x += y | x = x + y |
+| `-=` | x -= y | x = x - y |
+| `*=` | x *= y | x = x * y |
+| `/=` | x /= y | x = x / y |
+| `%=` | x %= y | x = x % y |
+| `**=` | x **= y | x = x ** y |
+| --- | --- | --- |
+|[ **Comparison Operators**](https://www.w3schools.com/js/js_comparisons.asp) |
+| `==` | equal to |
+| `===` | equal value and equal type |
+| `!=` | not equal |
+| `!==`	| not equal value or not equal type |
+| `>` |	greater than |
+| `<`	| less than |
+| `>=` | greater than or equal to |
+| `<=`	| less than or equal to |
+| `?`	| ternary operator |
+| [**Logical Operators**](https://www.w3schools.com/js/js_comparisons.asp) |
+| `&&` | logical and |
+| `||` | logical or |
+| `!` | logical not |
+
+### Logical Operators: && (and), || (or), !(negate= true becomes false and vice versa)
 - `===` is/equals
 - `!==` is not
 ```JavaScript
@@ -527,6 +579,7 @@ function removeElement(newArr){
 removeElement(concept);
 
 console.log(concept);
+//['arrays', 'can', 'be']
 ```
 #### Nested Arrays
 Arrays can store other arrays. When an array contains another array it is known as a nested array. 
@@ -721,6 +774,7 @@ Banana.
 Banana.
 Orange you glad I broke out the loop!
 ```
+
 `break` statements can be especially helpful when we’re looping through large data structures! With breaks, we can add test conditions besides the stopping condition, and exit the loop when they’re met.
 ---
 [back to top](#contents)
@@ -739,7 +793,7 @@ const higherOrder = (func, val) => {
   return func(val);
 }
 
-console.log(higherOrder(addTwo, 6));
+console.log(higherOrder(addTwo, 6)); // 8
 ```
 
 ```JavaScript
@@ -750,14 +804,14 @@ const addTwo = num => {
 
 const checkConsistentOutput = (func, val) => {
   let checkA = val + 2;
-  console.log("Value of val " + val);
-  console.log("Value of checkA: " + checkA);
+  console.log("Value of val: " + val); // Value of val: 4
+  console.log("Value of checkA: " + checkA); // Value of checkA: 6
   let checkB = func(val);
   return checkA === checkB ? func(val)
   : 'inconsistent results';
 }
 
-console.log(checkConsistentOutput(addTwo, 4));
+console.log(checkConsistentOutput(addTwo, 4)); // 6
 ```
 - Abstraction allows us to write complicated code in a way that’s easy to reuse, debug, and understand for human readers.
 - We can work with functions the same way we work with any other type of data, including reassigning them to new variables.
