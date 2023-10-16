@@ -204,7 +204,8 @@ if (hungerLevel <= 7) {
 | `/` |	Division | |
 | `%` |	Modulus (Division Remainder) | |
 | `++` | Increment | |
-| `--` | Decrement ||
+| `--` | Decrement | |
+| --- | --- | --- |
 | [**Assignment Operators**](https://www.w3schools.com/js/js_assignment.asp) | Example | Same As |
 | `=` |	x = y |	x = y |
 | `+=` | x += y | x = x + y |
@@ -224,9 +225,10 @@ if (hungerLevel <= 7) {
 | `>=` | greater than or equal to | |
 | `<=`	| less than or equal to | |
 | `?`	| ternary operator | |
+| --- | --- | --- |
 | [**Logical Operators**](https://www.w3schools.com/js/js_comparisons.asp) | |
 | `&&` | logical and | |
-| `||` | logical or | |
+| `\|\|` | logical or | |
 | `!` | logical not | |
 
 ### Logical Operators: && (and), || (or), !(negate= true becomes false and vice versa)
