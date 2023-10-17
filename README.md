@@ -66,6 +66,9 @@
     - [Setters](#setters)
     - [Factory Functions](#factory-functions)
     - [Property Value Shorthand](#property-value-shorthand)
+    - [Destructured Assignment](#destructured-assignment)
+    - [Built-in Object Methods](#built-in-object-methods)
+    - [Review Advanced Objects](#review-advanced-objects)
 
 ## Run JavaScript from Terminal/Shell
 - Navigate to desired folder
@@ -1522,3 +1525,99 @@ const monsterFactory = (name, age) => {
 };
 
 ```
+
+### Destructured Assignment
+We often want to extract key-value pairs from objects and save them as variables.
+However, we can also take advantage of a destructuring technique called destructured assignment to save ourselves some keystrokes. In destructured assignment we create a variable with the name of an object’s key that is wrapped in curly braces `{ }` and assign to it the object.
+
+```JavaScript
+const vampire = {
+  name: 'Dracula',
+  residence: 'Transylvania',
+  preferences: {
+    day: 'stay inside',
+    night: 'satisfy appetite'
+  }
+};
+
+const residence = vampire.residence; 
+console.log(residence); // Prints 'Transylvania' 
+
+//------- same as above using destructured assignment -------
+const { residence } = vampire; 
+console.log(residence); // Prints 'Transylvania'
+
+//------- grab nested items using destructured assignment -----
+const { day } = vampire.preferences; 
+console.log(day); // Prints 'stay inside'
+```
+
+Look back at the vampire object’s properties at the top. Then, in the example above, we declare a new variable residence that extracts the value of the residence property of vampire. When we log the value of residence to the console, 'Transylvania' is printed.
+We can even use destructured assignment to grab nested properties of an object as in the bottom example.
+
+```JavaScript
+const robot = {
+  model: '1E78V2',
+  energyLevel: 100,
+  functionality: {
+    beep() {
+      console.log('Beep Boop');
+    },
+    fireLaser() {
+      console.log('Pew Pew');
+    },
+  }
+};
+
+const { functionality } = robot;
+functionality.beep(); // Beep Boop
+```
+
+### [Built-in Object Methods](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object#Methods)
+In the previous exercises we’ve been creating instances of [objects](https://www.codecademy.com/resources/docs/javascript/objects) that have their own [methods](https://www.codecademy.com/resources/docs/javascript/methods). But, we can also take advantage of built-in methods for Objects!
+
+For example, we have access to object instance methods like: `.hasOwnProperty()`, `.valueOf()`, and many more! Practice your documentation reading skills and check out: [MDN’s object instance documentation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object#Methods).
+
+There are also useful Object class methods such as `Object.assign()`, `Object.entries()`, and `Object.keys()` just to name a few.
+
+```JavaScript
+const robot = {
+	model: 'SAL-1000',
+  mobile: true,
+  sentient: false,
+  armor: 'Steel-plated',
+  energyLevel: 75
+};
+
+// What is missing in the following method call?
+const robotKeys = Object.keys(robot);
+
+console.log(robotKeys);
+
+// Declare robotEntries below this line:
+const robotEntries = Object.entries(robot);
+
+console.log(robotEntries);
+
+// Declare newRobot below this line:
+const newRobot = Object.assign({
+  laserBlaster: true, 
+  voiceRecognition: true
+}, robot);
+
+console.log(newRobot);
+```
+
+### Review Advanced Objects
+- The object that a method belongs to is called the calling object.
+- The `this` keyword refers to the calling object and can be used to access properties of the calling object.
+- [Methods](https://www.codecademy.com/resources/docs/javascript/methods) do not automatically have access to other internal properties of the calling object.
+- The value of `this` depends on where the `this` is being accessed from.
+- We cannot use arrow functions as methods if we want to access other internal properties.
+- JavaScript objects do not have built-in privacy, rather there are conventions to follow to notify other developers about the intent of the code.
+- The usage of an underscore before a property name means that the original developer did not intend for that property to be directly changed.
+- Setters and getter methods allow for more detailed ways of accessing and assigning properties.
+- Factory functions allow us to create object instances quickly and repeatedly.
+- There are different ways to use object destructuring: one way is the property value shorthand and another is destructured assignment.
+- As with any concept, it is a good skill to learn how to use the documentation with objects!
+
