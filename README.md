@@ -53,6 +53,7 @@
     - [Creating Object Literals](#creating-object-literals)
       - [Accessing Properties](#accessing-properties)
       - [Property Assignment](#property-assignment)
+      - [Restrictions in Naming Properties](#restrictions-in-naming-properties)
     - [Methods](#methods)
     - [Nested Objects](#nested-objects)
     - [Pass By Reference](#pass-by-reference)
@@ -1150,6 +1151,7 @@ returnAnyProp(spaceship, 'homePlanet'); // Returns 'Earth'
 #### Property Assignment
 Objects are mutable - 
 We can use either dot notation,` .`, or bracket notation, `[]`, and the assignment operator, `=` to add new key-value pairs to an object or change an existing property.
+
 ![Property Assignment](/resources/images/object_property_assignment.svg "Property Assignment")
 
 It’s important to know that although we can’t reassign an object declared with const, we can still mutate it, meaning we can add new properties and change the properties that are there.
@@ -1170,6 +1172,19 @@ const spaceship = {
 delete spaceship.mission;  // Removes the mission property
 delete spaceship['Fuel Type']; // Removes the 'Fuel Type' property
 ```
+
+#### Restrictions in Naming Properties
+```JavaScript
+// Example of invalid key names
+const trainSchedule = {
+  platform num: 10, // Invalid because of the space between words.
+  40 - 10 + 2: 30, // Expressions cannot be keys.
+  +compartment: 'C' // The use of a + sign is invalid unless it is enclosed in quotations.
+}
+```
+
+Key names must either be strings or valid identifier or variable names (i.e. special characters such as - are not allowed in key names that are not strings).
+
 ### Methods
 When the data stored on an object is a function we call that a method. A property is what an object has, while a method is what an object does.
 Don’t forget to separate your methods with **commas** just as you would any other key-value pairs:
@@ -1180,14 +1195,25 @@ const alienShip = {
   retreat() {
     console.log(retreatMessage)
   },  // separate methods with commas
+  start(adverb) {
+    console.log(`The engine starts up ${adverb}...`);
+  },
   takeOff() {
     console.log('Spim... Borp... Glix... Blastoff!')
+  },
+  sputter: () => {
+    console.log('The engine sputters...');
   }
 };
 
 alienShip.retreat();
+alienShip.start('noisily');
 alienShip.takeOff();
+alienShip.sputter();
 ```
+
+Object methods are invoked with the syntax: `objectName.methodName(arguments)`.
+
 ### Nested Objects
 In application code, objects are often nested— an object might have another object as a property which in turn could have a property that’s an array of even more objects!
 ```JavaScript
@@ -1343,6 +1369,25 @@ console.log(robot.provideInfo());
 
 We saw in the previous exercise that for a method, the calling object is the object the method belongs to. If we use the this keyword in a method then the value of this is the calling object.
 Arrow functions inherently bind, or tie, an already defined `this` value to the function itself that is NOT the calling object.
+
+```JavaScript
+const myObj = {
+    data: 'abc',
+    loggerA: () => { console.log(this.data); },
+    loggerB() { console.log(this.data); },
+};
+
+myObj.loggerA();    // undefined
+myObj.loggerB();    // 'abc'
+```
+
+JavaScript arrow functions do not have their own `this` context, but use the `this` of the surrounding lexical context. Thus, they are generally a poor choice for writing object methods.
+
+Consider the example code:
+
+`loggerA` is a property that uses arrow notation to define the function. Since `data` does not exist in the global context, accessing `this.data` returns `undefined`.
+
+`loggerB` uses method syntax. Since `this` refers to the enclosing object, the value of the `data` property is accessed as expected, returning `"abc"`.
 
 ### Privacy
 
