@@ -1632,7 +1632,7 @@ There are also useful Object class methods such as `Object.assign()`, `Object.en
 
 ```JavaScript
 const robot = {
-	model: 'SAL-1000',
+  model: 'SAL-1000',
   mobile: true,
   sentient: false,
   armor: 'Steel-plated',
