@@ -1103,7 +1103,10 @@ f(9); // 14
 [cheatsheet](https://www.codecademy.com/learn/introduction-to-javascript/modules/learn-javascript-objects/cheatsheet)
 ![Objects graph](/resources/images/javascript_object.svg "Objects Anatomy")
 ### Creating Object Literals
-Objects can be assigned to variables just like any JavaScript type. We use curly braces, {}, to designate an object literal:
+A JavaScript object literal is enclosed with curly braces `{}`. Values are mapped to keys in the object with a colon (`:`), and the key-value pairs are separated by commas. All the keys are unique, but values are not.
+
+Key-value pairs of an object are also referred to as properties.
+
 ```JavaScript
 let fasterShip = {
   'Fuel Type' : 'Turbo Fuel', // separate with commas
@@ -1172,6 +1175,8 @@ const spaceship = {
 delete spaceship.mission;  // Removes the mission property
 delete spaceship['Fuel Type']; // Removes the 'Fuel Type' property
 ```
+
+Once an object is created in JavaScript, it is possible to remove properties from the object using the `delete` operator. The `delete` keyword deletes both the value of the property and the property itself from the object. The `delete` operator **only works on properties**, not on variables or functions.
 
 #### Restrictions in Naming Properties
 ```JavaScript
