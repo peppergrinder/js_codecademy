@@ -87,8 +87,81 @@
 For JavaScript the easiest method is to use the JavaScript Debug Terminal. Always open up a new one, add breakpoints in your code to observe variables, etc.
 ![New JavaScript Debug Terminal](resources/images/debug_01_new_JS_terminal.png)
 ![Run app](resources/images/debug_02_runApp.png)
+
+The debugger will stop at your breakpoint, move ahead step by step as shown below.
+
 ![Move one step](resources/images/debug_03_StepOver.png)
 ![Let run to completion](resources/images/debug_04_Resume.png)
+
+---
+
+## Run JavaScript App
+
+Instead of using the JS Debug Terminal, you can create a `launch.json` file:
+
+```JSON
+{
+  "name": "01_javascriptapp",
+  "version": "1.0.0",
+  "main": "_reverseWords.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "prompts": "^2.4.2"
+  }
+}
+```
+
+> package.json
+
+1. cd into your desired dir and create a node package; in your shell type:
+    - `npm init -y`
+2. Now we can install the npm package `prompts` dependency
+    - `npm i prompts`
+    - This creates a node_modules directory with prompts and adds a package-lock.json file.
+3. Add code
+    - See /01_JavaScriptApp/_prompts-reverseWords.js
+4. Create a launch.json file to configure the debugger.  
+**Make sure to be in the correct dir!**  
+In VSC under Run & Debug, create a launch.json file, select Node.js as debugger.
+![launch.json](resources/images/debug_05_createLaunchJson.png)  
+If done correctly you should have a new hidden dir: `.vscode`, including your new launch.json file.
+![.vscode folder](resources/images/debug_06_LaunchJsonLocation.png)
+5. If using Nodes manager, or haven't installed nodes directly, add path to your node app as     `runtimeEcecutable`.
+    - `"runtimeExecutable": "/opt/homebrew/bin/node`  
+    - To find your, path type:  
+`which node` and copy path. *(not necessary on my system)*
+6. Definitely add console to the launch.json file - without this, VSC will use an internal console, which can't be seen.
+`"console": "integratedTerminal"`
+
+Sample launch.json:
+
+```json
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Launch Program",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "program": "${workspaceFolder}/01_JavaScriptApp/_prompts-reverseWords.js",
+            "runtimeExecutable": "/opt/homebrew/bin/node", // this is the path to the node executable
+            "console": "integratedTerminal" // without this, VSC will use an internal console, which can't be seen.
+        }
+    ]
+}
+```
 
 ## 7 fundamental data types in JavaScript
 
