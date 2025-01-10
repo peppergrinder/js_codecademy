@@ -130,7 +130,7 @@ Instead of using the JS Debug Terminal, you can create a `launch.json` file:
 **Make sure to be in the correct dir!**  
 In VSC under Run & Debug, create a launch.json file, select Node.js as debugger.
 ![launch.json](resources/images/debug_05_createLaunchJson.png)  
-If done correctly you should have a new hidden dir: `.vscode`, including your new launch.json file.
+If done correctly you should have a new hidden dir: `.vscode`, including your new `launch.json` file.
 ![.vscode folder](resources/images/debug_06_LaunchJsonLocation.png)
 5. If using Nodes manager, or haven't installed nodes directly, add path to your node app as     `runtimeEcecutable`.
     - `"runtimeExecutable": "/opt/homebrew/bin/node`  
@@ -162,6 +162,9 @@ Sample launch.json:
     ]
 }
 ```
+
+Now you should be able to run & debug from VSC:
+![Run & Debug](resources/images/debug_07_runNdebug.png)
 
 ## 7 fundamental data types in JavaScript
 
