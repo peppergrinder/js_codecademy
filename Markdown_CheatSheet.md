@@ -5,7 +5,9 @@
 [github on Markdown](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax)
 
 ## Heading II
+
 ### Heading III
+
 *Italics*
 **Bold**
 ~~Strikethrough~~
@@ -13,16 +15,19 @@
 ## Lists
 
 ### Unordered Lists (#, +, -)
+
 + List Item 1
 + List Item 2
 + List Item 3
 
 ### Ordered List (1....n)
+
 1. List Item 1
 2. List Item 2
 3. List Item 3
 
 ### Nested List
+
 1. First list item
    - First nested list item
      - Second nested list item
@@ -34,28 +39,35 @@
 `this should look like code`
 
 If you need a distinct block, use tripple backticks
-```
+
+``` zsh
 git status
 git add
 git commit
 ```
+
 Add language to code block [Language detection](https://github.com/github-linguist/linguist/blob/master/lib/linguist/languages.yml)
+
 ```JavaScript
 const plantNeedsWater3 = day => day === 'Wednesday' ? true : false;
 ```
+
 <sub>This is a subscript text </sub>
 <sup>This is a superscript text </sup>
 
 ### Task lists
+
 - [x] #739
 - [ ] https://github.com/octo-org/octo-repo/issues/740
 - [ ] Add delight to the experience when all tasks are complete :tada:
 - [ ] \(Optional) Open a followup issue :shipit:
 
 ### Color
+
 The background color is `#ffffff` for light mode and `#000000` for dark mode.
 
 ### Tables
+
 | Item              | In Stock | Price |
 | :---------------- | :------: | ----: |
 | Python Hat        |   True   | 23.99 |
